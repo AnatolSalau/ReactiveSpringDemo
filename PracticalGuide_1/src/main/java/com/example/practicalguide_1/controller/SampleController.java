@@ -20,7 +20,7 @@ public class SampleController {
     @GetMapping(value = "/sample3", produces = MediaType.APPLICATION_STREAM_JSON_VALUE)
     Flux<Integer> sample3() {
         return Flux
-                .just(1,2,3,4,5,6,7,8,9,10)
+                .just(1, 2, 3, 4, 5, 6, 7, 8, 9, 10)
                 .delayElements(Duration.ofSeconds(1L))
                 .log();
     }
@@ -31,15 +31,17 @@ public class SampleController {
                 .just(1, 2, 3, 4, 5, 6, 7, 8, 9, 10)
                 .delayElements(Duration.ofSeconds(1L));
 
-        Flux<ServerSentEvent<String>> message = integerFlux.map(
-                i -> {
-                    return ServerSentEvent.<String>builder()
-                            .id(String.valueOf(i))
-                            .event("message")
-                            .data("Event #" + i + " at " + LocalDateTime.now())
-                            .build();
-                }
-        );
+        Flux<ServerSentEvent<String>> message = integerFlux
+                .map(i -> {
+                            return ServerSentEvent.<String>builder()
+                                    .id(String.valueOf(i))
+                                    .event("message")
+                                    .data("Event #" + i + " at " + LocalDateTime.now())
+                                    .build();
+                        }
+
+                )
+                .log();
         return message;
     }
 }
