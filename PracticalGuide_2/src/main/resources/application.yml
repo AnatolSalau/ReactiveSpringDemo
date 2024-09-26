@@ -1,0 +1,37 @@
+spring:
+   application:
+      name: "PracticalGuide_2"
+   jpa:
+      properties:
+         hibernate:
+            globally_quoted_identifiers: true
+            show_sql: true
+            format_sql: true
+      open-in-view: false
+   r2dbc:
+      url: r2dbc:pool:postgresql://localhost:5432/postgres
+      username: postgres
+      password: sA#259979148307
+      properties:
+         initial-size: 100
+         max-size: 500
+         max-idle-time: 30m
+         validation-query: SELECT 1
+   liquibase:
+      url: jdbc:postgresql://localhost:5432/postgres
+      user: postgres
+      change-log: classpath:/db/changelog/app-changelog.yml
+      password: sA#259979148307
+logging:
+   level:
+      org:
+         springframework:
+            transaction:
+               interceptor: trace
+      root: INFO
+   file:
+      path: src/main/resources/logs
+      name: src/main/resources/logs/logs.log
+server:
+   port: 8080
+

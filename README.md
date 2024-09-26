@@ -7,6 +7,8 @@
 
 3. [Practical guide Intro](https://gatheca-george.medium.com/spring-webflux-reactive-micro-service-practical-guide-intro-eeadf733a226)
     - [github](https://github.com/gathecageorge/spring-webflux-rest-api-intro/tree/2-practical-guide-intro/)
+4. [Practical guide Using Relational Database](https://gatheca-george.medium.com/spring-webflux-using-relational-database-mysql-postgresql-fcc5e487f57f)
+   - [github](https://github.com/gathecageorge/spring-webflux-rest-api-intro/tree/3-using-relational-database)
 
 
 
