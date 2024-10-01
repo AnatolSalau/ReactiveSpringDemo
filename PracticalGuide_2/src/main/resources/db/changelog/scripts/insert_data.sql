@@ -1,10 +1,10 @@
 
 
-INSERT INTO public.students (id, name, registedon, status) VALUES
+INSERT INTO public.students (id, name, registered_on, status) VALUES
                                                                (1, 'Ivan', 1, 1),
                                                                (2, 'Petr', 2, 1);
 
-INSERT INTO public.courses (id, coursename) VALUES
+INSERT INTO public.courses (id, course_name) VALUES
                                                 (1, 'Math'),
                                                 (2, 'English'),
                                                 (3, 'Physics'),
