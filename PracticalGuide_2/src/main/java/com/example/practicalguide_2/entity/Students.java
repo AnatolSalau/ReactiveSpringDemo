@@ -9,6 +9,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import org.springframework.data.annotation.Id;
+import org.springframework.data.annotation.Version;
 import org.springframework.data.relational.core.mapping.Column;
 import org.springframework.data.relational.core.mapping.Table;
 
@@ -21,11 +22,12 @@ import org.springframework.data.relational.core.mapping.Table;
 @Table("students")
 public class Students {
 
-   @Id
+
     @Column("id")
     @GeneratedValue(
         strategy = GenerationType.SEQUENCE
     )
+    @Id
     private Long id;
 
     @Column("name")
@@ -36,4 +38,8 @@ public class Students {
 
     @Column("status")
     private Integer status;
+
+    @Column("version")
+    @Version
+    private Integer version;
 }

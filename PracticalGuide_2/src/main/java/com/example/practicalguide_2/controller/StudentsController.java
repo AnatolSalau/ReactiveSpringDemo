@@ -37,14 +37,15 @@ public class StudentsController {
         @RequestParam Map<String, String> filterParams
     ) {
         String status = filterParams.getOrDefault("status", "1");
-        String name = filterParams.getOrDefault("name", "User");
+        String name = filterParams.getOrDefault("name", "Ivan");
         if (name != null) {
             name = "%" + name + "%";
         }
 
         long offset = (page - 1) * limit;
         System.out.println();
-        return studentsRepository.findAllByStatusAndName(offset, limit, status, name).delayElements(Duration.ofSeconds(2L));
+        /*return studentsRepository.findAllByStatusAndName(offset, limit, status, name).delayElements(Duration.ofSeconds(2L));*/
+        return studentsRepository.findAll().delayElements(Duration.ofSeconds(2L));
     }
 
     @PostMapping("/students")

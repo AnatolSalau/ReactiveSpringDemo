@@ -1,8 +1,8 @@
 
 
-INSERT INTO public.students (id, name, registered_on, status) VALUES
-                                                               (1, 'Ivan', 1, 1),
-                                                               (2, 'Petr', 2, 1);
+INSERT INTO public.students (id, name, registered_on, status, version) VALUES
+                                                               (1, 'Ivan', 1, 1, 0),
+                                                               (2, 'Petr', 2, 1, 0);
 
 INSERT INTO public.courses (id, course_name) VALUES
                                                 (1, 'Math'),

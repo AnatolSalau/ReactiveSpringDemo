@@ -2,7 +2,8 @@ CREATE TABLE IF NOT EXISTS students
 (   id BIGSERIAL PRIMARY KEY ,
     name VARCHAR(255) NOT NULL,
     registered_on BIGINT NOT NULL,
-    status INT NOT NULL
+    status INT NOT NULL,
+    version BIGINT
 );
 
 CREATE TABLE IF NOT EXISTS courses
