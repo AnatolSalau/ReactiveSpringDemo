@@ -36,7 +36,7 @@ public class StudentsController {
         @RequestParam(value = "size", defaultValue = "10") Long limit,
         @RequestParam Map<String, String> filterParams
     ) {
-        String status = filterParams.getOrDefault("status", "1");
+        Long status = Long.valueOf(filterParams.getOrDefault("status", "1"));
         String name = filterParams.getOrDefault("name", "Ivan");
         if (name != null) {
             name = "%" + name + "%";
@@ -44,8 +44,7 @@ public class StudentsController {
 
         long offset = (page - 1) * limit;
         System.out.println();
-        /*return studentsRepository.findAllByStatusAndName(offset, limit, status, name).delayElements(Duration.ofSeconds(2L));*/
-        return studentsRepository.findAll().delayElements(Duration.ofSeconds(2L));
+        return studentsRepository.findAllByStatusAndName(status,name, limit, offset).delayElements(Duration.ofSeconds(2L));
     }
 
     @PostMapping("/students")
@@ -64,7 +63,8 @@ public class StudentsController {
                 //here we are just updating the name. You can add others
                 foundStudent.setName(newStudentData.getName());
 
-                return studentsRepository.save(foundStudent);
+                Mono<Students> studentAfterUpdate = studentsRepository.save(foundStudent);
+                return studentAfterUpdate;
             }).map(student -> {
                 HashMap<String, Students> data = new HashMap<>();
                 data.put("student", student);
